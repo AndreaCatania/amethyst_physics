@@ -1,0 +1,16 @@
+sudo: false
+language: rust
+rust:
+- stable
+before_script:
+- rustup component add rustfmt --toolchain stable-x86_64-unknown-linux-gnu
+script:
+- |
+  cargo fmt -- --check &&
+  cargo build &&
+  cargo test -- --all &&
+  cargo --only stable doc
+cache: cargo
+env:
+  global:
+  - TRAVIS_CARGO_NIGHTLY_FEATURE=""
