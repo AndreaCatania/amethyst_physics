@@ -1,7 +1,10 @@
 # Phythyst
 
-[![Build Status](https://travis-ci.com/AndreaCatania/amethyst_phythyst.svg?branch=master)](https://travis-ci.com/AndreaCatania/amethyst_phythyst) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Build Status] ![License] ![Line of code]
 
+[Build Status]: https://travis-ci.com/AndreaCatania/amethyst_phythyst.svg?branch=master
+[License]: https://img.shields.io/badge/License-MIT-green.svg
+[Line of code]: https://tokei.rs/b1/github/andreacatania/amethyst_phythyst?category=code
 
 The `Phythyst` crate, is the [Amethyst] physics abstraction layer which is an interface to the physics engine.
 
@@ -105,6 +108,9 @@ Should one want to do anything a little bit advanced with off the shelves physic
 # Interfaces
 
 The interface is broken in servers ([available servers](./src/servers/)), and each of them provides access to a specific part part of the engine.
+
+Each physics engine provide its own specific features, and `Phythyst` allows to use them even when (for obvious reasons) they doesn't fit the provided APIs.
+Indeed it is possible to downcast the `Phythyst` server pointer to the specific backend server exposing so specific functionalities.
 
 # Backends
 
