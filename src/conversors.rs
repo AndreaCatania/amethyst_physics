@@ -56,9 +56,7 @@ pub mod quat_conversor {
 
 pub mod transf_conversor {
     //! This module contains the necessary functions to convert an Amethyst f32 `Isometry` to generic physics `Isometry`.
-    use amethyst_core::math::{
-        Isometry3, Translation3, UnitQuaternion,
-    };
+    use amethyst_core::math::{Isometry3, Translation3, UnitQuaternion};
 
     use crate::{
         conversors::{quat_conversor, vec_conversor},
