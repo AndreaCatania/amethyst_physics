@@ -1,0 +1,14 @@
+[package]
+name = "amethyst_phythyst"
+version = "0.1.0"
+authors = ["Andrea Catania <info@andreacatania.com>"]
+edition = "2018"
+description = "Physics engine interface"
+keywords = ["game", "engine", "physics", "3d", "amethyst"]
+categories = ["physics", "physics::engine"]
+license = "MIT/Apache-2.0"
+
+[dependencies]
+amethyst_core = { path = "../amethyst_core", version = "0.7.0" }
+amethyst_error = { path = "../amethyst_error", version = "0.2.0" }
+log = "0.4.6"
