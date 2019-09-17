@@ -18,7 +18,7 @@ use crate::{
 
 /// To use the `Phythyst` crate is necessary to register the `PhysicsBundle` as show below.
 ///
-/// ```rust
+/// ```rust,ignore
 /// use amethyst::phythyst::PhysicsBundle;
 /// use amethyst::amethyst_nphysics::NPhysicsBackend;
 ///
@@ -142,8 +142,8 @@ macro_rules! define_setters{
         pub fn $with_system<S>(
             mut self,
             system: S,
-            name: &'static str,
-            dependencies: &'static [&'static str],
+            name: String,
+            dependencies: Vec<String>,
         ) -> Self
         where
             S: for<'c> System<'c> + 'static + Send,
@@ -156,8 +156,8 @@ macro_rules! define_setters{
         pub fn $add_system<S>(
             &mut self,
             system: S,
-            name: &'static str,
-            dependencies: &'static [&'static str],
+            name: String,
+            dependencies: Vec<String>,
         ) where
             S: for<'c> System<'c> + 'static + Send,
         {
@@ -173,8 +173,8 @@ macro_rules! define_setters{
         pub fn $with_system_desc<SD, S>(
             mut self,
             system_desc: SD,
-            name: &'static str,
-            dependencies: &'static [&'static str],
+            name: String,
+            dependencies: Vec<String>,
         ) -> Self
         where
             SD: SystemDesc<'a, 'b, S> + 'static,
@@ -188,8 +188,8 @@ macro_rules! define_setters{
         pub fn $add_system_desc<SD, S>(
             &mut self,
             system_desc: SD,
-            name: &'static str,
-            dependencies: &'static [&'static str],
+            name: String,
+            dependencies: Vec<String>,
         ) where
             SD: SystemDesc<'a, 'b, S> + 'static,
             S: for<'s> System<'s> + 'static + Send,

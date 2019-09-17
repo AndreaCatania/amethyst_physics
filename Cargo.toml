@@ -9,6 +9,8 @@ categories = ["physics", "physics::engine"]
 license = "MIT/Apache-2.0"
 
 [dependencies]
-amethyst_core = "0.7.0"
-amethyst_error = "0.2.0"
+#amethyst_core = "0.7.0"
+#amethyst_error = "0.2.0"
+amethyst_core = {git = "https://github.com/AndreaCatania/amethyst", branch = "batch"}# TODO Use the amethyst master or remove it once published.
+amethyst_error = {git = "https://github.com/AndreaCatania/amethyst", branch = "batch"}# TODO Use the amethyst master or remove it once published.
 log = "0.4.6"

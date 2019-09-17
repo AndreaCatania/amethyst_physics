@@ -21,13 +21,12 @@
 //! Initialize `Phythyst` is really simple, and the only thing that you need to do is to register
 //! the [PhysicsBundle].
 //!
-//! ```rust
+//! ```rust,ignore
 //! use amethyst::phythyst::PhysicsBundle;
 //! use amethyst::amethyst_nphysics::NPhysicsBackend;
 //!
 //! let game_data = GameDataBuilder::default()
 //!     .with_bundle(PhysicsBundle::<f32, NPhysicsBackend>::new()).unwrap()
-//!
 //! ```
 //!
 //! That's it!
