@@ -20,6 +20,7 @@ impl<N: crate::PtReal> Default for PhysicsSyncEntitySystem<N> {
 }
 
 impl<'a, N: crate::PtReal> System<'a> for PhysicsSyncEntitySystem<N> {
+    #[allow(clippy::type_complexity)]
     type SystemData = (
         ReadExpect<'a, PhysicsWorld<N>>,
         Entities<'a>,

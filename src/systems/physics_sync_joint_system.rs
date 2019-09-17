@@ -29,6 +29,7 @@ impl<N: crate::PtReal> Default for PhysicsSyncJointSystem<N> {
 }
 
 impl<'a, N: crate::PtReal> System<'a> for PhysicsSyncJointSystem<N> {
+    #[allow(clippy::type_complexity)]
     type SystemData = (
         ReadExpect<'a, PhysicsWorld<N>>,
         ReadStorage<'a, PhysicsHandle<PhysicsRigidBodyTag>>,

@@ -1,5 +1,5 @@
-//! # Phythyst
-//! The `Phythyst` crate, provides an easy to use, interface to control any physics engine; as long as
+//! # Amethyst Physics
+//! The `amethyst_physics` crate, provides an easy to use, interface to control any physics engine; as long as
 //! they implement the [PhysicsBackend].
 //!
 //! Doesn't exist the perfect physics engine that is good in all situations, and may be necessary try
@@ -7,22 +7,22 @@
 //! sometimes is not obvious from the start that a physics engine is not meant to do a specific task,
 //! (which unfortunately is even the main feature of the game), and when it get realized is too late.
 //!
-//! To avoid this unpredictable, and not cute, surprises; `Phythyst` allow to change at any stage of
+//! To avoid this unpredictable, and not cute, surprises; `amethyst_physics` allow to change at any stage of
 //! the game development, the physics engine without changing any part of the game.
-//! At the same time, `Phythyst` doesn't force to use the physics engine through its interfaces.
+//! At the same time, `amethyst_physics` doesn't force to use the physics engine through its interfaces.
 //! In this way, when a physics engine provides a __special__ functionality, that doesn't fit the
-//! `Phythyst` concept, it is still possible to use.
+//! `amethyst_physics` concept, it is still possible to use.
 //!
 //! The interface is broken in servers ([available servers](./servers/index.html)), and each of them
 //! provides access to a specific part part of the engine.
 //! For example, is possible to create a new world using the function [create_world](./servers/trait.WorldPhysicsServerTrait.html#tymethod.create_world).
 //!
-//! # How to initialize Phythyst?
-//! Initialize `Phythyst` is really simple, and the only thing that you need to do is to register
+//! # How to initialize amethyst_physics?
+//! Initialize `amethyst_physics` is really simple, and the only thing that you need to do is to register
 //! the [PhysicsBundle].
 //!
 //! ```rust,ignore
-//! use amethyst::phythyst::PhysicsBundle;
+//! use amethyst_physics::PhysicsBundle;
 //! use amethyst::amethyst_nphysics::NPhysicsBackend;
 //!
 //! let game_data = GameDataBuilder::default()
@@ -46,7 +46,7 @@
 pub use physics_time::PhysicsTime;
 pub use systems::PhysicsBundle;
 
-/// Phythyst real
+/// amethyst_physics real
 // TODO Add f64?
 // TODO Is it possible to remove RealField? Worth it?
 pub trait PtReal: amethyst_core::math::RealField + From<f32> + Into<f32> {}

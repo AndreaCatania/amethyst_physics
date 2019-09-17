@@ -1,4 +1,4 @@
-//! This module contains all object types (like the physics tags) that are exposed trough `phythyst`.
+//! This module contains all object types (like the physics tags) that are exposed trough `amethyst_physics`.
 
 use std::sync::{Arc, RwLock};
 
@@ -187,7 +187,7 @@ impl<T: PhysicsTag> std::ops::Drop for PhysicsTagContainer<T> {
 /// What this mean in practice is that you don't have access to PhysicsTag ID because the Index get
 /// removed and the only way would have been re implement a new storage with the capability to return
 /// PhysicsTag on component drop.
-/// Also the destruction pipeline is dictated by phythyst to each physics backend.
+/// Also the destruction pipeline is dictated by `amethyst_physics` to each physics backend.
 ///
 /// Considering the above the GC seems a better way.
 #[derive(Debug)]

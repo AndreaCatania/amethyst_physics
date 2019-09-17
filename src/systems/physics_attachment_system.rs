@@ -19,6 +19,7 @@ impl Default for PhysicsAttachmentSystem {
 }
 
 impl<'s> System<'s> for PhysicsAttachmentSystem {
+    #[allow(clippy::type_complexity)]
     type SystemData = (
         ReadExpect<'s, PhysicsTime>,
         ReadExpect<'s, PhysicsWorld<f32>>,

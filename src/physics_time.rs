@@ -1,4 +1,4 @@
-/// This resource is used by `Phythyst` to keep track of the physics time.
+/// This resource is used by `amethyst_physics` to keep track of the physics time.
 ///
 /// You can use it to know the actual physics delta time, or to change the physics frame per second.
 ///

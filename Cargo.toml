@@ -1,12 +1,14 @@
 [package]
-name = "amethyst_phythyst"
-version = "0.1.0"
+name = "amethyst_physics"
+version = "0.0.1"
 authors = ["Andrea Catania <info@andreacatania.com>"]
 edition = "2018"
-description = "Physics engine interface"
-keywords = ["game", "engine", "physics", "3d", "amethyst"]
-categories = ["physics", "physics::engine"]
-license = "MIT/Apache-2.0"
+repository = "https://github.com/AndreaCatania/amethyst_physics"
+description = "The Amethyst Physics engine interface."
+keywords = ["physics", "dynamic", "ecs", "rigid", "soft", "joint", "constraint", "game", "amethyst"]
+categories = ["physics", "physics::engine", "game", "game::engine"]
+readme = "README.md"
+license = "MIT"
 
 [dependencies]
 #amethyst_core = "0.7.0"

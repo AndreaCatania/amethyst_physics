@@ -1,17 +1,17 @@
-# Phythyst
+# Amethyst Physics
 
 ![Build Status] ![License] ![Line of code]
 
-[Build Status]: https://travis-ci.com/AndreaCatania/amethyst_phythyst.svg?branch=master
+[Build Status]: https://travis-ci.com/AndreaCatania/amethyst_physics.svg?branch=master
 [License]: https://img.shields.io/badge/License-MIT-green.svg
-[Line of code]: https://tokei.rs/b1/github/andreacatania/amethyst_phythyst?category=code
+[Line of code]: https://tokei.rs/b1/github/andreacatania/amethyst_physics?category=code
 
-The `Phythyst` crate, is the [Amethyst] physics abstraction layer which is an interface to the physics engine.
+The `amethyst_physics` crate, is the [Amethyst] physics abstraction layer which is an interface to the physics engine.
 
-Its first aim is the simplicity. Indeed the APIs are studied and implemented in a way to favor the developer experience. For example, in one line of code you are able to initialize any physics engine, which implement the Phythyst interface, to your [Amethyst] game.
+Its first aim is the simplicity. Indeed the APIs are studied and implemented in a way to favor the developer experience. For example, in one line of code you are able to initialize any physics engine, which implement the `amethys_physics` interface, to your [Amethyst] game.
 
 ```rust
-use amethyst::phythyst::PhysicsBundle;
+use amethyst_physics::PhysicsBundle;
 use amethyst::amethyst_nphysics::NPhysicsBackend;
 
 let game_data = GameDataBuilder::default()
@@ -79,7 +79,7 @@ world
 
 I've added the `Transform` component, and as you already expect, it's possible to position the `RigidBody` by modifying it.
 
-Everything works in full ECS style, and thanks to the Phythyst synchronization, even removing a `RigidBody` or a `Shape` is a matter of dropping the component.
+Everything works in full ECS style, and thanks to the `amethyst_physics` synchronization, even removing a `RigidBody` or a `Shape` is a matter of dropping the component.
 
 ---
 
@@ -109,8 +109,8 @@ Should one want to do anything a little bit advanced with off the shelves physic
 
 The interface is broken in servers ([available servers](./src/servers/)), and each of them provides access to a specific part part of the engine.
 
-Each physics engine provide its own specific features, and `Phythyst` allows to use them even when (for obvious reasons) they doesn't fit the provided APIs.
-Indeed it is possible to downcast the `Phythyst` server pointer to the specific backend server exposing so specific functionalities.
+Each physics engine provide its own specific features, and `amethyst_physics` allows to use them even when (for obvious reasons) they doesn't fit the provided APIs.
+Indeed it is possible to downcast the `amethyst_physics` server pointer to the specific backend server exposing so specific functionalities.
 
 # Backends
 

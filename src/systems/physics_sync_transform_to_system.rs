@@ -57,6 +57,7 @@ impl<N: crate::PtReal> PhysicsSyncTransformToSystem<N> {
 }
 
 impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformToSystem<N> {
+    #[allow(clippy::type_complexity)]
     type SystemData = (
         ReadExpect<'s, PhysicsWorld<N>>,
         ReadStorage<'s, Transform>,

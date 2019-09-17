@@ -1,4 +1,4 @@
-//! The servers are the `Phythyst` interfaces, that is possible to use in order to control ary physics
+//! The servers are the `amethyst_physics` interfaces, that is possible to use in order to control ary physics
 //! engine that implements them.
 //!
 //! Each server controls a specific part of the physics engine, and they are:

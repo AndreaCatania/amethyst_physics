@@ -16,10 +16,10 @@ use crate::{
     PhysicsTime,
 };
 
-/// To use the `Phythyst` crate is necessary to register the `PhysicsBundle` as show below.
+/// To use the `amethyst_physics` crate is necessary to register the `PhysicsBundle` as show below.
 ///
 /// ```rust,ignore
-/// use amethyst::phythyst::PhysicsBundle;
+/// use amethyst_physics::PhysicsBundle;
 /// use amethyst::amethyst_nphysics::NPhysicsBackend;
 ///
 /// let game_data = GameDataBuilder::default()
@@ -37,7 +37,7 @@ use crate::{
 /// **But don't worry**, the above statement means that a physics step can occur multiple times per
 /// each frame.
 /// So, when you have a `System` that interact with the physics, you have to register it using
-/// the API provided by the `PhysicsBundle`; `Phythyst` will take care to execute your `System`s
+/// the API provided by the `PhysicsBundle`; `amethyst_physics` will take care to execute your `System`s
 /// at the right time.
 ///
 /// ##### Pipeline
@@ -60,11 +60,11 @@ use crate::{
 ///     (like checking for volumes overlaps, or collision events).
 ///
 /// # Parallel physics dispatching
-/// `Phythyst` is designed to dispatch the physics in parallel with everything else, by default.
+/// `amethyst_physics` is designed to dispatch the physics in parallel with everything else, by default.
 /// When you start to interact with it, you have to approach it correctly to maintain this property.
 ///
 /// Some internal parts are being explained, and if the physics of your game is not so heavy, or you
-/// are not yet confortable with `phythyst`, you can just skip this section.
+/// are not yet confortable with `amethyst_physics`, you can just skip this section.
 ///
 /// The physics pipeline, just explained above, groups all the `System`s that interact with the physics.
 /// We can consider all these `System`s, a single group; let's call it `PhysicsBatch`.
@@ -78,7 +78,7 @@ use crate::{
 ///
 /// When nothing is registered in the `PhysicsBatch`, the only resource that can potentially cause problems
 /// is the [Transform Component].
-/// To avoid using the [Transform Component] inside the `PhysicsBatch`; `Phythyst` defines the
+/// To avoid using the [Transform Component] inside the `PhysicsBatch`; `amethyst_physics` defines the
 /// `PhysicsSyncSystem`, that executed at the begining of each frame, it will take care to copy the
 /// transforms from the physics to `Amethyst`. Leaving the physics and the rendering untied and free
 /// to be executed in parallel.
