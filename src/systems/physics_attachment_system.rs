@@ -85,10 +85,9 @@ impl<'s> System<'s> for PhysicsAttachmentSystem {
                                 .area_server()
                                 .set_transform(area.get(), &attachment.cache_world_transform);
                         } else if let Some(rigid_body) = rigid_bodies.get(*entity) {
-                            physics_world.rigid_body_server().set_transform(
-                                rigid_body.get(),
-                                &attachment.cache_world_transform,
-                            );
+                            physics_world
+                                .rigid_body_server()
+                                .set_transform(rigid_body.get(), &attachment.cache_world_transform);
                         } else {
                             // Do Nothing.
                             // Entity transformation is allowed in the mid of transformation chain
