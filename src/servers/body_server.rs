@@ -15,7 +15,7 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
     /// Create a Rigid Body and return its handle.
     /// The PhysicsHandle returned can be safely cloned.
     /// When all instances of this Handle are dropped the Body is Dropped automatically.
-    fn create_body(&self, body_desc: &RigidBodyDesc<N>) -> PhysicsHandle<PhysicsRigidBodyTag>;
+    fn create(&self, body_desc: &RigidBodyDesc<N>) -> PhysicsHandle<PhysicsRigidBodyTag>;
 
     /// Set the entity which holds this body.
     fn set_entity(&self, body_tag: PhysicsRigidBodyTag, index: Option<Entity>);
@@ -30,17 +30,17 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
     /// Set the rigid shape of the body.
     /// Passing None, will leave the RigidBody without any shape.
     ///
-    /// You can create a shape, using the function `ShapeServer::create_shape`.
+    /// You can create a shape, using the function `ShapeServer::create`.
     fn set_shape(&self, body_tag: PhysicsRigidBodyTag, shape_tag: Option<PhysicsShapeTag>);
 
     /// Get the shape of the body
     fn shape(&self, body_tag: PhysicsRigidBodyTag) -> Option<PhysicsShapeTag>;
 
     /// Set the transformation of the body.
-    fn set_body_transform(&self, body: PhysicsRigidBodyTag, transf: &Isometry3<N>);
+    fn set_transform(&self, body: PhysicsRigidBodyTag, transf: &Isometry3<N>);
 
     /// Get the actual transformation of the body.
-    fn body_transform(&self, body_tag: PhysicsRigidBodyTag) -> Isometry3<N>;
+    fn transform(&self, body_tag: PhysicsRigidBodyTag) -> Isometry3<N>;
 
     /// Sets the body mode
     fn set_mode(&self, body_tag: PhysicsRigidBodyTag, mode: BodyMode);

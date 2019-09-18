@@ -9,13 +9,13 @@ pub trait ShapePhysicsServerTrait<N: crate::PtReal> {
     /// Create a shape and return the handle to it.
     /// The PhysicsHandle returned can be safely cloned.
     /// When all instances of this Handle are dropped the shape is Dropped automatically.
-    fn create_shape(&self, shape: &ShapeDesc<N>) -> PhysicsHandle<PhysicsShapeTag>;
+    fn create(&self, shape: &ShapeDesc<N>) -> PhysicsHandle<PhysicsShapeTag>;
 
     /// Change the internal shape description of this shape.
-    fn update_shape(&self, shape_tag: PhysicsShapeTag, shape_desc: &ShapeDesc<N>);
+    fn update(&self, shape_tag: PhysicsShapeTag, shape_desc: &ShapeDesc<N>);
 }
 
-/// Shape description used to create a new shape using `create_shape`.
+/// Shape description used to create a new shape using `create`.
 #[derive(Clone, Debug)]
 pub enum ShapeDesc<N: crate::PtReal> {
     /// Sphere shape

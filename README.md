@@ -40,7 +40,7 @@ let rigid_body_component = {
     let physics_world = world.fetch::<PhysicsWorld<f32>>();
 
     // Create the actual `RigidBody` component.
-    physics_world.rigid_body_server().create_body(&rb_desc)
+    physics_world.rigid_body_server().create(&rb_desc)
 };
 ```
 
@@ -60,7 +60,7 @@ let shape_component = {
     let physics_world = world.fetch::<PhysicsWorld<f32>>();
 
     // Create the actual `Shape` component.
-    physics_world.shape_server().create_shape(&s_desc)
+    physics_world.shape_server().create(&s_desc)
 };
 ```
 

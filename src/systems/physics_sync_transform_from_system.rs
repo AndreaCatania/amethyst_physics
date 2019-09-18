@@ -47,7 +47,7 @@ impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformFromSystem<N> {
         // TODO find a way to update only moving things and not always all
         for (entity, rb, _, _) in (&entities, &bodies, &transf_mask, !&parents).join() {
             if let Some(transform) = transforms.get_mut(entity) {
-                let body_transform = physics_world.rigid_body_server().body_transform(rb.get());
+                let body_transform = physics_world.rigid_body_server().transform(rb.get());
 
                 transform.set_isometry(conversors::transf_conversor::from_physics(&body_transform));
             }

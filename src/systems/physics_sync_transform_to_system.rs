@@ -121,7 +121,7 @@ impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformToSystem<N> {
         for (transform, rb_tag, _, _) in
             (&transforms, &bodies, !&parents, &edited_transforms).join()
         {
-            physics_world.rigid_body_server().set_body_transform(
+            physics_world.rigid_body_server().set_transform(
                 rb_tag.get(),
                 &conversors::transf_conversor::to_physics(transform.isometry()),
             );
@@ -130,7 +130,7 @@ impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformToSystem<N> {
         // Areas
         for (transform, a_tag, _, _) in (&transforms, &areas, !&parents, &edited_transforms).join()
         {
-            physics_world.area_server().set_body_transform(
+            physics_world.area_server().set_transform(
                 a_tag.get(),
                 &conversors::transf_conversor::to_physics(transform.isometry()),
             );
@@ -154,7 +154,7 @@ impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformToSystem<N> {
                 let computed_trs =
                     Self::parent_transform(parent, &transforms, &parents) * transform.isometry();
 
-                physics_world.rigid_body_server().set_body_transform(
+                physics_world.rigid_body_server().set_transform(
                     rb_tag.get(),
                     &conversors::transf_conversor::to_physics(&computed_trs),
                 );
@@ -173,7 +173,7 @@ impl<'s, N: crate::PtReal> System<'s> for PhysicsSyncTransformToSystem<N> {
                 let computed_trs =
                     Self::parent_transform(parent, &transforms, &parents) * transform.isometry();
 
-                physics_world.area_server().set_body_transform(
+                physics_world.area_server().set_transform(
                     a_tag.get(),
                     &conversors::transf_conversor::to_physics(&computed_trs),
                 );

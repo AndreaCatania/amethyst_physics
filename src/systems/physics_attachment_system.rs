@@ -59,7 +59,7 @@ impl<'s> System<'s> for PhysicsAttachmentSystem {
                         // Is a Rigid Body
                         physics_world
                             .rigid_body_server()
-                            .body_transform(rigid_body.get())
+                            .transform(rigid_body.get())
                     } else if let Some(parent_attachment) = physics_attachments.get(parent.entity) {
                         // Is just a PhysicsAttachment
 
@@ -83,9 +83,9 @@ impl<'s> System<'s> for PhysicsAttachmentSystem {
                         if let Some(area) = areas.get(*entity) {
                             physics_world
                                 .area_server()
-                                .set_body_transform(area.get(), &attachment.cache_world_transform);
+                                .set_transform(area.get(), &attachment.cache_world_transform);
                         } else if let Some(rigid_body) = rigid_bodies.get(*entity) {
-                            physics_world.rigid_body_server().set_body_transform(
+                            physics_world.rigid_body_server().set_transform(
                                 rigid_body.get(),
                                 &attachment.cache_world_transform,
                             );
