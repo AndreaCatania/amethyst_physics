@@ -37,7 +37,6 @@ pub trait AreaPhysicsServerTrait<N: PtReal> {
     /// Get the transformation of the area.
     fn body_transform(&self, area: PhysicsAreaTag) -> Isometry3<N>;
 
-    // TODO please return an iterator and avoid to copy vectors around
     /// Returns the list of events occurred in the last step.
     /// Is mandatory check this array each sub step to be sure to not miss any event.
     fn overlap_events(&self, area_tag: PhysicsAreaTag) -> Vec<OverlapEvent>;
