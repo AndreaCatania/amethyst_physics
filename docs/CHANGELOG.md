@@ -1,4 +1,4 @@
-# Unreleased
+# Version 0.1.0
 
 ### Added
 - Added the Change log file. [#1]
