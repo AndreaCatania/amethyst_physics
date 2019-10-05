@@ -9,7 +9,7 @@
 //!
 //! Is it possible to access them trough the `PhysicsWorld`.
 
-pub use area_server::{AreaPhysicsServerTrait, OverlapEvent};
+pub use area_server::{AreaDesc, AreaPhysicsServerTrait, OverlapEvent};
 pub use body_server::{BodyMode, RBodyPhysicsServerTrait, RigidBodyDesc};
 pub use joint_server::{JointDesc, JointPhysicsServerTrait, JointPosition};
 pub use shape_server::{ShapeDesc, ShapePhysicsServerTrait};

@@ -10,7 +10,7 @@ pub trait AreaPhysicsServerTrait<N: PtReal> {
     /// Create an Area and return its handle.
     /// The PhysicsHandle returned can be safely cloned.
     /// When all instances of this Handle are dropped the Area is Dropped automatically.
-    fn create(&self) -> PhysicsHandle<PhysicsAreaTag>;
+    fn create(&self, area_desc: &AreaDesc) -> PhysicsHandle<PhysicsAreaTag>;
 
     /// Set the entity which holds this body.
     fn set_entity(&self, area_tag: PhysicsAreaTag, index: Option<Entity>);
@@ -32,14 +32,49 @@ pub trait AreaPhysicsServerTrait<N: PtReal> {
     fn shape(&self, area_tag: PhysicsAreaTag) -> Option<PhysicsShapeTag>;
 
     /// Set the transformation of the area.
-    fn set_transform(&self, area: PhysicsAreaTag, transf: &Isometry3<N>);
+    fn set_transform(&self, area_tag: PhysicsAreaTag, transf: &Isometry3<N>);
 
     /// Get the transformation of the area.
-    fn transform(&self, area: PhysicsAreaTag) -> Isometry3<N>;
+    fn transform(&self, area_tag: PhysicsAreaTag) -> Isometry3<N>;
+
+    /// Set the groups this body belong to.
+    fn set_belong_to(&self, area_tag: PhysicsAreaTag, groups: Vec<CollisionGroup>);
+
+    /// Get the groups this body belong to.
+    fn belong_to(&self, area_tag: PhysicsAreaTag) -> Vec<CollisionGroup>;
+
+    /// Set the groups this body collide with.
+    fn set_collide_with(&self, area_tag: PhysicsAreaTag, groups: Vec<CollisionGroup>);
+
+    /// Get the groups this body collide with.
+    fn collide_with(&self, area_tag: PhysicsAreaTag) -> Vec<CollisionGroup>;
 
     /// Returns the list of events occurred in the last step.
     /// Is mandatory check this array each sub step to be sure to not miss any event.
     fn overlap_events(&self, area_tag: PhysicsAreaTag) -> Vec<OverlapEvent>;
+}
+
+/// This structure holds all information about the Rigid body before it is created.
+#[derive(Debug)]
+pub struct AreaDesc {
+    /// Collision Groups this Rigid Body belong.
+    pub belong_to: Vec<CollisionGroup>,
+    /// Collide with groups.
+    pub collide_with: Vec<CollisionGroup>,
+}
+
+/// Initialize the description with default values:
+/// ```ignore
+/// belong_to: vec(1),
+/// collide_with: vec(1),
+/// ```
+impl Default for AreaDesc {
+    fn default() -> Self {
+        AreaDesc {
+            belong_to: vec![CollisionGroup::default()],
+            collide_with: vec![CollisionGroup::default()],
+        }
+    }
 }
 
 /// Overlap event

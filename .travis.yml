@@ -4,12 +4,12 @@ rust:
 - stable
 before_script:
 - rustup component add rustfmt --toolchain stable-x86_64-unknown-linux-gnu
+- rustup component add clippy
 script:
-- |
-  cargo fmt -- --check &&
-  cargo build &&
-  cargo test -- --all &&
-  cargo --only stable doc
+- cargo fmt -- --check
+- cargo build
+- cargo test --all
+- cargo clippy --all
 cache: cargo
 env:
   global:
