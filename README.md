@@ -1,10 +1,13 @@
 # Amethyst Physics
 
-![Build Status] ![License] ![Line of code]
+[![Build Status]](https://travis-ci.com/AndreaCatania/amethyst_physics) [![License]](https://github.com/AndreaCatania/amethyst_physics/blob/master/LICENSE) [![Line of code]](https://github.com/AndreaCatania/amethyst_physics/pulse)
+
+[CHANGE LOG]
 
 [Build Status]: https://travis-ci.com/AndreaCatania/amethyst_physics.svg?branch=master
 [License]: https://img.shields.io/badge/License-MIT-green.svg
 [Line of code]: https://tokei.rs/b1/github/andreacatania/amethyst_physics?category=code
+[change log]: https://github.com/AndreaCatania/amethyst_physics/blob/master/docs/CHANGELOG.md
 
 The `amethyst_physics` crate, is the [Amethyst] physics abstraction layer which is an interface to the physics engine.
 

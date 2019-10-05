@@ -1,6 +1,6 @@
 [package]
 name = "amethyst_physics"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Andrea Catania <info@andreacatania.com>"]
 edition = "2018"
 repository = "https://github.com/AndreaCatania/amethyst_physics"
