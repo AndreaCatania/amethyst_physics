@@ -2,8 +2,8 @@
 
 pub use crate::{
     objects::{
-        PhysicsAreaTag, PhysicsAttachment, PhysicsGarbageCollector, PhysicsHandle, PhysicsJointTag,
-        PhysicsRigidBodyTag, PhysicsShapeTag, PhysicsTag,
+        CollisionGroup, PhysicsAreaTag, PhysicsAttachment, PhysicsGarbageCollector, PhysicsHandle,
+        PhysicsJointTag, PhysicsRigidBodyTag, PhysicsShapeTag, PhysicsTag,
     },
     servers::{
         AreaPhysicsServerTrait, BodyMode, JointDesc, JointPhysicsServerTrait, JointPosition,

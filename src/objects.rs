@@ -239,3 +239,27 @@ impl<N: PtReal> Default for PhysicsAttachment<N> {
         }
     }
 }
+
+/// Collision Group which ID can go from 0 to 29 (inclusive)
+#[derive(Debug, Copy, Clone)]
+pub struct CollisionGroup(u8);
+
+/// The default collision group is 1.
+impl Default for CollisionGroup {
+    fn default() -> Self {
+        CollisionGroup(1u8)
+    }
+}
+
+impl CollisionGroup {
+    /// Create a new collisionGroup, panics if the submitted number is more than 29
+    pub fn new(group: u8) -> Self {
+        assert!(group < 29);
+        CollisionGroup(group)
+    }
+
+    /// Returns the group id
+    pub fn get(self) -> u8 {
+        self.0
+    }
+}

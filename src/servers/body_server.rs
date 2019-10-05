@@ -1,5 +1,5 @@
 use amethyst_core::ecs::Entity;
-use amethyst_core::math::{Isometry3, Vector3};
+use amethyst_core::math::{convert, one, zero, Isometry3, Vector3};
 
 use crate::objects::*;
 
@@ -10,7 +10,6 @@ use crate::objects::*;
 ///
 /// The object that implement this interface is wrapped by `RBodyPhysicsServer`.
 /// It's stored as resource in the world.
-///
 pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
     /// Create a Rigid Body and return its handle.
     /// The PhysicsHandle returned can be safely cloned.
@@ -59,6 +58,30 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
 
     /// Get the bounciness of the body
     fn bounciness(&self, body_tag: PhysicsRigidBodyTag) -> N;
+
+    /// Set the groups this body belong to.
+    fn set_belong_to(&self, body_tag: PhysicsRigidBodyTag, groups: Vec<CollisionGroup>);
+
+    /// Get the groups this body belong to.
+    fn belong_to(&self, body_tag: PhysicsRigidBodyTag) -> Vec<CollisionGroup>;
+
+    /// Set the groups this body collide with.
+    fn set_collide_with(&self, body_tag: PhysicsRigidBodyTag, groups: Vec<CollisionGroup>);
+
+    /// Get the groups this body collide with.
+    fn collide_with(&self, body_tag: PhysicsRigidBodyTag) -> Vec<CollisionGroup>;
+
+    /// Set the locked translational axis of this body.
+    fn set_lock_translation(&self, body_tag: PhysicsRigidBodyTag, axis: Vector3<bool>);
+
+    /// Get the locked translation axis of this body.
+    fn lock_translation(&self, body_tag: PhysicsRigidBodyTag) -> Vector3<bool>;
+
+    /// Set the locked rotation axis of this body.
+    fn set_lock_rotation(&self, body_tag: PhysicsRigidBodyTag, axis: Vector3<bool>);
+
+    /// Get the locked rotation axis of this body.
+    fn lock_rotation(&self, body_tag: PhysicsRigidBodyTag) -> Vector3<bool>;
 
     /// Clear forces
     fn clear_forces(&self, body: PhysicsRigidBodyTag);
@@ -112,7 +135,7 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
 }
 
 /// This structure holds all information about the Rigid body before it is created.
-#[derive(Default, Debug)]
+#[derive(Debug)]
 pub struct RigidBodyDesc<N> {
     /// Body mode
     pub mode: BodyMode,
@@ -122,6 +145,56 @@ pub struct RigidBodyDesc<N> {
     pub friction: N,
     /// Body bounciness range 0 - 1
     pub bounciness: N,
+    /// Collision Groups this Rigid Body belong.
+    pub belong_to: Vec<CollisionGroup>,
+    /// Collide with groups.
+    pub collide_with: Vec<CollisionGroup>,
+    /// Lock body translation along X
+    pub lock_translation_x: bool,
+    /// Lock body translation along Y
+    pub lock_translation_y: bool,
+    /// Lock body translation along Z
+    pub lock_translation_z: bool,
+    /// Lock body rotation along X
+    pub lock_rotation_x: bool,
+    /// Lock body rotation along Y
+    pub lock_rotation_y: bool,
+    /// Lock body rotation along Z
+    pub lock_rotation_z: bool,
+}
+
+/// Initialize the description with default values:
+/// ```ignore
+/// mode: BodyMode::Dynamic,
+/// mass: 1.0,
+/// friction: 0.2,
+/// bounciness: 0.0,
+/// belong_to: vec(1),
+/// collide_with: vec(1),
+/// lock_translation_x: false,
+/// lock_translation_y: false,
+/// lock_translation_z: false,
+/// lock_rotation_x: false,
+/// lock_rotation_y: false,
+/// lock_rotation_z: false,
+/// ```
+impl<N: crate::PtReal> Default for RigidBodyDesc<N> {
+    fn default() -> Self {
+        RigidBodyDesc {
+            mode: BodyMode::default(),
+            mass: one(),
+            friction: convert(0.2),
+            bounciness: zero(),
+            belong_to: vec![CollisionGroup::default()],
+            collide_with: vec![CollisionGroup::default()],
+            lock_translation_x: false,
+            lock_translation_y: false,
+            lock_translation_z: false,
+            lock_rotation_x: false,
+            lock_rotation_y: false,
+            lock_rotation_z: false,
+        }
+    }
 }
 
 /// The mode of a body.
