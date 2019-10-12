@@ -11,7 +11,7 @@
 
 The `amethyst_physics` crate, is the [Amethyst] physics abstraction layer which is an interface to the physics engine.
 
-Its first aim is the simplicity. Indeed the APIs are studied and implemented in a way to favor the developer experience. For example, in one line of code you are able to initialize any physics engine, which implement the `amethys_physics` interface, to your [Amethyst] game.
+Its first aim is the simplicity. Indeed the APIs are studied and implemented in a way to favor the developer experience. For example, in one line of code you are able to initialize any physics engine, which implement the `amethyst_physics` interface, to your [Amethyst] game.
 
 ```rust
 use amethyst_physics::PhysicsBundle;
