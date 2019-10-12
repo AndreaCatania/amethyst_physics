@@ -1,10 +1,10 @@
 # Amethyst Physics
 
-[![Build Status]](https://travis-ci.com/AndreaCatania/amethyst_physics) [![License]](https://github.com/AndreaCatania/amethyst_physics/blob/master/LICENSE) [![Line of code]](https://github.com/AndreaCatania/amethyst_physics/pulse)
+[![Build Status]](https://travis-ci.org/AndreaCatania/amethyst_physics) [![License]](https://github.com/AndreaCatania/amethyst_physics/blob/master/LICENSE) [![Line of code]](https://github.com/AndreaCatania/amethyst_physics/pulse)
 
 [CHANGE LOG]
 
-[Build Status]: https://travis-ci.com/AndreaCatania/amethyst_physics.svg?branch=master
+[Build Status]: https://travis-ci.org/AndreaCatania/amethyst_physics.svg?branch=master
 [License]: https://img.shields.io/badge/License-MIT-green.svg
 [Line of code]: https://tokei.rs/b1/github/andreacatania/amethyst_physics?category=code
 [change log]: https://github.com/AndreaCatania/amethyst_physics/blob/master/docs/CHANGELOG.md
