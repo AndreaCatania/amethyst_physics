@@ -132,6 +132,24 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
         body: PhysicsRigidBodyTag,
         position: &Vector3<N>,
     ) -> Vector3<N>;
+
+    /// Sets the maximum contact to track for this body.
+    ///
+    /// If the provided size is lower than the actual contacts that a body generate
+    /// you will lost some information; make sure to set a proper value.
+    /// The contact event are not guaranteed to arrive always in the same order.
+    ///
+    /// Default is 0.
+    fn set_max_contacts_count(&self, body_tag: PhysicsRigidBodyTag, max_contacts: usize);
+
+    /// Get the maximum contacts count of this body.
+    fn max_contacts_count(&self, body_tag: PhysicsRigidBodyTag) -> usize;
+
+    /// Fills the contacts array with the contacts events occurred in the last step.
+    /// It doesn't fill more than the `max_contact_count` set.
+    ///
+    /// It's mandatory to check this array each sub step to be sure to not miss any event.
+    fn contact_events(&self, body_tag: PhysicsRigidBodyTag, contacts: &mut Vec<ContactEvent<N>>);
 }
 
 /// This structure holds all information about the Rigid body before it is created.
@@ -214,4 +232,23 @@ impl Default for BodyMode {
     fn default() -> Self {
         BodyMode::Dynamic
     }
+}
+
+/// A contact event generated in the past frame.
+#[derive(Copy, Clone, PartialEq, Debug)]
+pub struct ContactEvent<N: crate::PtReal> {
+    /// The other body tag.
+    other_body: PhysicsRigidBodyTag,
+    /// The other body entity.
+    other_entity: Option<Entity>,
+    /// The other body shape tag that is in contact.
+    other_shape_id: PhysicsShapeTag,
+    /// The actual body shape tag that is in contact.
+    shape_id: PhysicsShapeTag,
+    /// The contact normal on the local body.
+    contact_normal: Vector3<N>,
+    /// The contact location.
+    contact_location: Vector3<N>,
+    /// The generated impulse.
+    contact_impulse: Vector3<N>,
 }
