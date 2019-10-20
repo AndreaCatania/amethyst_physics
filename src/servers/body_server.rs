@@ -1,5 +1,5 @@
 use amethyst_core::ecs::Entity;
-use amethyst_core::math::{convert, one, zero, Isometry3, Vector3};
+use amethyst_core::math::{convert, one, Point3, Unit, zero, Isometry3, Vector3};
 
 use crate::objects::*;
 
@@ -140,10 +140,10 @@ pub trait RBodyPhysicsServerTrait<N: crate::PtReal> {
     /// The contact event are not guaranteed to arrive always in the same order.
     ///
     /// Default is 0.
-    fn set_max_contacts_count(&self, body_tag: PhysicsRigidBodyTag, max_contacts: usize);
+    fn set_contacts_to_report(&self, body_tag: PhysicsRigidBodyTag, count: usize);
 
     /// Get the maximum contacts count of this body.
-    fn max_contacts_count(&self, body_tag: PhysicsRigidBodyTag) -> usize;
+    fn contacts_to_report(&self, body_tag: PhysicsRigidBodyTag) -> usize;
 
     /// Fills the contacts array with the contacts events occurred in the last step.
     /// It doesn't fill more than the `max_contact_count` set.
@@ -179,6 +179,8 @@ pub struct RigidBodyDesc<N> {
     pub lock_rotation_y: bool,
     /// Lock body rotation along Z
     pub lock_rotation_z: bool,
+    /// Contacts to report.
+    pub contacts_to_report: usize,
 }
 
 /// Initialize the description with default values:
@@ -195,6 +197,7 @@ pub struct RigidBodyDesc<N> {
 /// lock_rotation_x: false,
 /// lock_rotation_y: false,
 /// lock_rotation_z: false,
+/// contacts_to_report: 0,
 /// ```
 impl<N: crate::PtReal> Default for RigidBodyDesc<N> {
     fn default() -> Self {
@@ -211,6 +214,7 @@ impl<N: crate::PtReal> Default for RigidBodyDesc<N> {
             lock_rotation_x: false,
             lock_rotation_y: false,
             lock_rotation_z: false,
+            contacts_to_report: 0,
         }
     }
 }
@@ -238,17 +242,25 @@ impl Default for BodyMode {
 #[derive(Copy, Clone, PartialEq, Debug)]
 pub struct ContactEvent<N: crate::PtReal> {
     /// The other body tag.
-    other_body: PhysicsRigidBodyTag,
+    pub other_body: PhysicsRigidBodyTag,
     /// The other body entity.
-    other_entity: Option<Entity>,
-    /// The other body shape tag that is in contact.
-    other_shape_id: PhysicsShapeTag,
-    /// The actual body shape tag that is in contact.
-    shape_id: PhysicsShapeTag,
+    pub other_entity: Option<Entity>,
     /// The contact normal on the local body.
-    contact_normal: Vector3<N>,
-    /// The contact location.
-    contact_location: Vector3<N>,
+    pub contact_normal: Unit<Vector3<N>>,
+    /// The contact location in world space.
+    pub contact_location: Point3<N>,
     /// The generated impulse.
-    contact_impulse: Vector3<N>,
+    pub contact_impulse: Vector3<N>,
+}
+
+impl<N: crate::PtReal> Default for ContactEvent<N>{
+    fn default() -> Self{
+        ContactEvent {
+            other_body: PhysicsRigidBodyTag::U32(0),
+            other_entity: None,
+            contact_normal: Vector3::y_axis(),
+            contact_location: Point3::origin(),
+            contact_impulse: Vector3::zeros(),
+        }
+    }
 }
