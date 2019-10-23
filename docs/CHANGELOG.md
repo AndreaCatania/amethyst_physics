@@ -1,3 +1,14 @@
+# Unreleased
+
+### Added
+- Add contact event API.
+
+### Changed
+
+### Removed
+
+[#6]: https://github.com/AndreaCatania/amethyst_physics/pull/6
+
 # Version 0.1.0
 
 ### Added

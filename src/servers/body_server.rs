@@ -1,5 +1,5 @@
 use amethyst_core::ecs::Entity;
-use amethyst_core::math::{convert, one, Point3, Unit, zero, Isometry3, Vector3};
+use amethyst_core::math::{convert, one, zero, Isometry3, Point3, Unit, Vector3};
 
 use crate::objects::*;
 
@@ -246,21 +246,21 @@ pub struct ContactEvent<N: crate::PtReal> {
     /// The other body entity.
     pub other_entity: Option<Entity>,
     /// The contact normal on the local body.
-    pub contact_normal: Unit<Vector3<N>>,
+    pub normal: Unit<Vector3<N>>,
     /// The contact location in world space.
-    pub contact_location: Point3<N>,
+    pub location: Point3<N>,
     /// The generated impulse.
-    pub contact_impulse: Vector3<N>,
+    pub impulse: Vector3<N>,
 }
 
-impl<N: crate::PtReal> Default for ContactEvent<N>{
-    fn default() -> Self{
+impl<N: crate::PtReal> Default for ContactEvent<N> {
+    fn default() -> Self {
         ContactEvent {
             other_body: PhysicsRigidBodyTag::U32(0),
             other_entity: None,
-            contact_normal: Vector3::y_axis(),
-            contact_location: Point3::origin(),
-            contact_impulse: Vector3::zeros(),
+            normal: Vector3::y_axis(),
+            location: Point3::origin(),
+            impulse: Vector3::zeros(),
         }
     }
 }
