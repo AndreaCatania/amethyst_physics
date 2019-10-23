@@ -1,6 +1,14 @@
 # Unreleased
 
 ### Added
+
+### Changed
+
+### Removed
+
+# Version 0.1.1
+
+### Added
 - Add contact event API.
 
 ### Changed

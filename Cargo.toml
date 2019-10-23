@@ -6,7 +6,7 @@ edition = "2018"
 repository = "https://github.com/AndreaCatania/amethyst_physics"
 description = "The Amethyst Physics engine interface."
 keywords = ["physics", "dynamics", "game", "amethyst"]
-categories = ["physics", "physics::engine", "game", "game::engine"]
+categories = ["physics", "game_engines", "simulation", "game"]
 readme = "README.md"
 license = "MIT"
 
