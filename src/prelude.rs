@@ -6,9 +6,9 @@ pub use crate::{
         PhysicsJointTag, PhysicsRigidBodyTag, PhysicsShapeTag, PhysicsTag,
     },
     servers::{
-        AreaPhysicsServerTrait, BodyMode, JointDesc, JointPhysicsServerTrait, JointPosition,
-        OverlapEvent, PhysicsWorld, RBodyPhysicsServerTrait, RigidBodyDesc, ShapeDesc,
-        ShapePhysicsServerTrait, WorldPhysicsServerTrait,
+        AreaPhysicsServerTrait, BodyMode, ContactEvent, JointDesc, JointPhysicsServerTrait,
+        JointPosition, OverlapEvent, PhysicsWorld, RBodyPhysicsServerTrait, RigidBodyDesc,
+        ShapeDesc, ShapePhysicsServerTrait, WorldPhysicsServerTrait,
     },
     PhysicsTime,
 };
