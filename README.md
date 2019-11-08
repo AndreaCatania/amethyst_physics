@@ -67,7 +67,7 @@ let shape_component = {
 };
 ```
 
-Now, just by adding this `shape_component` to the `Entity` the shape will by automatically assigned to the `RigidBody`.
+Now, just by adding this `shape_component` to the `Entity` the shape will be automatically assigned to the `RigidBody`.
 _Notice that the shape can be shared by many bodies._
 
 ```rust
