@@ -6,6 +6,15 @@
 
 ### Removed
 
+# Version 0.2.0
+
+### Added
+
+### Changed
+- Updated to support `amethyst` 0.15
+
+### Removed
+
 # Version 0.1.1
 
 ### Added
